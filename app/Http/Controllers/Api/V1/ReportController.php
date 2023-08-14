@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Report;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreReportRequest;
 use App\Http\Requests\UpdateReportRequest;
+use App\Models\Report;
 
 class ReportController extends Controller
 {
@@ -15,7 +16,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
+        return Report::all();
     }
 
     /**
