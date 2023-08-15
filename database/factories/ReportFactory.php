@@ -2,9 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Faker\Factory as FakerFactory;
 
 class ReportFactory extends Factory
 {
@@ -19,7 +18,7 @@ class ReportFactory extends Factory
         $message = $this->faker->sentence(rand(5,15));
         $status = $this->faker->randomElement(['N', 'W', 'D']);
         return [
-            'customer_id' => Customer::factory(),
+            'user_id' => User::factory(),
             'status' => $status,
             'topic' => $topic,
             'message' => $message,

@@ -9,7 +9,14 @@ class Report extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'topic',
+        'message',
+        'status',
+        'comment',
+    ];
+
     public function customer(){
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(User::class);
     }
 }

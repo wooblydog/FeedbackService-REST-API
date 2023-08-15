@@ -15,7 +15,7 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->integer('customer_id');
+            $table->integer('user_id');
             $table->string('topic');
             $table->string('message');
             $table->string('status'); // New, In work, Done
