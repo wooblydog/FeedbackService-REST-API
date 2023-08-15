@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Controllers\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class UpdateReportRequest extends FormRequest
+class StoreReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +14,7 @@ class UpdateReportRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,10 @@ class UpdateReportRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'topic' =>['required'],
+            'message' => ['required'],
+            'status'=>['required', Rule::in(['N','W','D'])],
+            'comment' => ['nullable']
         ];
     }
 }
