@@ -28,9 +28,11 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
         $user = User::where('email', $credentials['email'])->where('password', $credentials['password'])->first();
+
         if (!$user) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+
         $token = auth()->login($user);
         return $this->respondWithToken($token);
     }

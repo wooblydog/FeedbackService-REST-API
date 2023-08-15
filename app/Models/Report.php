@@ -14,6 +14,7 @@ class Report extends Model
         'message',
         'status',
         'comment',
+        'user_id'
     ];
 
     public function customer(){

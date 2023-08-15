@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "1bf71e6e-225f-4e0b-b569-7a28131a1329",
+		"name": "FeedbackService-REST-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28089737"
+	},
+	"item": [
+		{
+			"name": "Авторизация пользователя и выдача токена",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"gkuzmin@vladimirov.com\",\r\n    \"password\":\"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://iqtest/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"iqtest"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Просмотр своих записей или всех (зависит от роли))",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9pcXRlc3RcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2OTIxMjI0NjgsImV4cCI6MTY5MjEyNjA2OCwibmJmIjoxNjkyMTIyNDY4LCJqdGkiOiJBekI5NFlmemR3Z0FqcWFNIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.AtLe1yyGRGusuzcwq0MguTWxw8lOfdXNm1c4EJiYzAA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://iqtest/api/v1/reports",
+					"protocol": "http",
+					"host": [
+						"iqtest"
+					],
+					"path": [
+						"api",
+						"v1",
+						"reports"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание записи",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9pcXRlc3RcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2OTIxMjI0NjgsImV4cCI6MTY5MjEyNjA2OCwibmJmIjoxNjkyMTIyNDY4LCJqdGkiOiJBekI5NFlmemR3Z0FqcWFNIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.AtLe1yyGRGusuzcwq0MguTWxw8lOfdXNm1c4EJiYzAA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"topic\": \"ТЕст\",\r\n    \"message\": \"ТЕСТ ТЕСТ ТЕСТ\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://iqtest/api/v1/reports",
+					"protocol": "http",
+					"host": [
+						"iqtest"
+					],
+					"path": [
+						"api",
+						"v1",
+						"reports"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Просмотр статуса конкретной записи",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9pcXRlc3RcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2OTIxMjI0NjgsImV4cCI6MTY5MjEyNjA2OCwibmJmIjoxNjkyMTIyNDY4LCJqdGkiOiJBekI5NFlmemR3Z0FqcWFNIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.AtLe1yyGRGusuzcwq0MguTWxw8lOfdXNm1c4EJiYzAA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://iqtest/api/v1/reports/status/1",
+					"protocol": "http",
+					"host": [
+						"iqtest"
+					],
+					"path": [
+						"api",
+						"v1",
+						"reports",
+						"status",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Авторизация обычным пользователем и выдача токена Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"gkuzmin@vladimirov.com\",\r\n    \"password\":\"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://iqtest/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"iqtest"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Просмотр конкретной записи",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9pcXRlc3RcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2OTIxMjI0NjgsImV4cCI6MTY5MjEyNjA2OCwibmJmIjoxNjkyMTIyNDY4LCJqdGkiOiJBekI5NFlmemR3Z0FqcWFNIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.AtLe1yyGRGusuzcwq0MguTWxw8lOfdXNm1c4EJiYzAA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://iqtest/api/v1/reports/1",
+					"protocol": "http",
+					"host": [
+						"iqtest"
+					],
+					"path": [
+						"api",
+						"v1",
+						"reports",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение записи",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9pcXRlc3RcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2OTIxMjI0NjgsImV4cCI6MTY5MjEyNjA2OCwibmJmIjoxNjkyMTIyNDY4LCJqdGkiOiJBekI5NFlmemR3Z0FqcWFNIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.AtLe1yyGRGusuzcwq0MguTWxw8lOfdXNm1c4EJiYzAA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"D\",\r\n    \"comment\": \"ОТЛФОЫАЛФЫ\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://iqtest/api/v1/reports/1",
+					"protocol": "http",
+					"host": [
+						"iqtest"
+					],
+					"path": [
+						"api",
+						"v1",
+						"reports",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

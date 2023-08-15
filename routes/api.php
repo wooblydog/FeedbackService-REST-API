@@ -20,9 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::group(['prefix' => 'v1'], function (){
+Route::group(['prefix' => 'v1', 'middleware' => 'jwt.auth'], function () {
     Route::apiResource('reports', ReportController::class);
-    Route::get('reports/status/{report}', '\App\Http\Controllers\Api\V1\ReportController@show');
+    Route::post('reports', [ReportController::class, 'store']);
+    Route::get('/reports/status/{report}', '\App\Http\Controllers\ReportController@status');
 });
 
 Route::group([

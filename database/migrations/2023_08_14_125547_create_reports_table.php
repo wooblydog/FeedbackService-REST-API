@@ -18,7 +18,7 @@ class CreateReportsTable extends Migration
             $table->integer('user_id');
             $table->string('topic');
             $table->string('message');
-            $table->string('status'); // New, In work, Done
+            $table->string('status')->default('N'); // New, In work, Done
             $table->string('comment')->nullable();
             $table->dateTime('created_at');
             $table->dateTime('updated_at');

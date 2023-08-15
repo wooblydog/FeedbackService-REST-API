@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreReportRequest extends FormRequest
 {
@@ -25,10 +24,8 @@ class StoreReportRequest extends FormRequest
     public function rules()
     {
         return [
-            'topic' =>['required'],
-            'message' => ['required'],
-            'status'=>['required', Rule::in(['N','W','D'])],
-            'comment' => ['nullable']
+            'topic' => ['required'],
+            'message' => ['required']
         ];
     }
 }

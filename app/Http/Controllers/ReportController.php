@@ -2,74 +2,73 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreReportRequest;
+use App\Http\Requests\UpdateReportRequest;
 use App\Http\Resources\V1\ReportCollection;
 use App\Http\Resources\V1\ReportResource;
 use App\Models\Report;
+use Illuminate\Support\Facades\Auth;
 use function response;
 
 class ReportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return ReportCollection
-     */
+
     public function index()
     {
+        $user = Auth::user();
+
+        if ($user->type == 'C') {
+            $reports = Report::where('user_id', $user->id)->get();
+            return new ReportCollection($reports);
+        }
+
         return new ReportCollection(Report::paginate());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Controllers\StoreReportRequest  $request
-     * @return ReportResource
-     */
+
     public function store(StoreReportRequest $request)
     {
-        return new ReportResource(Report::create($request->all()));
+        $user = Auth::user();
+
+        if ($user->type != 'C') {
+            return response()->json(['error' => 'Forbidden'], 403);
+        }
+
+        $report = $request->all();
+        $report['user_id'] = $user->id;
+        return new ReportResource(Report::create($report));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function show(Report $report)
+    {
+        return $report;
+    }
+
+    public function status(Report $report)
     {
         return response()->json(['status' => $report->status]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Report $report)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Controllers\UpdateReportRequest  $request
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(UpdateReportRequest $request, Report $report)
     {
-        $request->update($request->all());
+        $user = Auth::user();
+
+        if ($user->type != 'M') {
+            return response()->json(['error' => 'Forbidden'], 403);
+        }
+
+        $report->update($request->all());
+        return $report;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Report $report)
     {
         //
