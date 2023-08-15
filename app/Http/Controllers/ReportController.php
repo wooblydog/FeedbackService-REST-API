@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\ReportCollection;
 use App\Http\Resources\V1\ReportResource;
 use App\Models\Report;
+use function response;
 
 class ReportController extends Controller
 {
@@ -22,7 +22,7 @@ class ReportController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Controllers\Api\V1\StoreReportRequest  $request
+     * @param  \App\Http\Controllers\StoreReportRequest  $request
      * @return ReportResource
      */
     public function store(StoreReportRequest $request)
@@ -55,7 +55,7 @@ class ReportController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Controllers\Api\V1\UpdateReportRequest  $request
+     * @param  \App\Http\Controllers\UpdateReportRequest  $request
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
